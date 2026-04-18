@@ -1,0 +1,32 @@
+name: Retail Banking Automation
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          pip install pytest pytest-html selenium
+
+      - name: Run Tests
+        run: |
+          pytest tests/test_endToendGlobalSQA.py --browser_names chrome --html=report.html
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Test-Report
+          path: report.html

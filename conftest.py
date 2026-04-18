@@ -14,15 +14,21 @@ def pytest_addoption(parser):
 def BrowserInstance(request):
     browser = request.config.getoption("--browser_names")
     if browser == "chrome":
-        service = ChromeService("/Users/aarif/Documents/chromedriver")  # update path
-        driver = webdriver.Chrome(service=service)
+        options = webdriver.ChromeOptions()
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        # service = ChromeService("/Users/aarif/Documents/chromedriver")  # update path
+        driver = webdriver.Chrome(options=options)
     elif browser == "firefox":
-        service = FirefoxService()  # OR give geckodriver path
-        driver = webdriver.Firefox(service=service)
+        options = webdriver.FirefoxOptions()
+        options.add_argument("--headless")
+        # service = FirefoxService()  # OR give geckodriver path
+        driver = webdriver.Firefox(options=options)
 
     # Common setup (no duplication)
     driver.implicitly_wait(5)
-    driver.maximize_window()
+    # driver.maximize_window()
     driver.get("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login")
     yield driver
     driver.quit()

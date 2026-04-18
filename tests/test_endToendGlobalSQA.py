@@ -23,13 +23,6 @@ with open(test_data_path) as json_file:
 def test_endToend(BrowserInstance,item):
     driver = BrowserInstance
 
-    # fname = "KAAZZ"
-    # lname = "ZZOPP"
-    # postalCode = "9022"
-    # currency = "Rupee"
-    # deposit_amt = 10000
-    # withdrawal_amt = 5000
-
     homepage = HomePage(driver)
     managerpage = homepage.click_manager_login()
     managerpage.add_customer(item["fname"], item["lname"],item["postalCode"])
