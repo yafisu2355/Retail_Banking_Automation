@@ -1,4 +1,5 @@
 import json
+import os
 import time
 
 import pytest
@@ -14,7 +15,14 @@ from pageObjects.homepage import HomePage
 from pageObjects.managerpage import ManagerPage
 from utils.alert_utils import AlertUtils
 
-test_data_path = "/Users/aarif/Desktop/pythonn/examples/Retail_Banking_Automation/data/test_endToendGlobalSQA.json"
+# test_data_path = "/Users/aarif/Desktop/pythonn/examples/Retail_Banking_Automation/data/test_endToendGlobalSQA.json"
+# with open(test_data_path) as json_file:
+#     test_data = json.load(json_file)
+#     data_list = test_data["data"]
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+test_data_path = os.path.join(BASE_DIR, "data", "test_endToendGlobalSQA.json")
+
 with open(test_data_path) as json_file:
     test_data = json.load(json_file)
     data_list = test_data["data"]
