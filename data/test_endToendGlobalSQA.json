@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+    "fname" : "KAAZZ",
+      "lname" : "OPPU",
+      "postalCode" : "5667",
+      "currency" : "Rupee",
+      "deposit_amt" : 10000,
+      "withdrawal_amt" : 5000
+    }
+  ]
+}
+
+
